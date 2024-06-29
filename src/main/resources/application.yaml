@@ -1,0 +1,18 @@
+server:
+  port: 8080
+  error:
+    include-stacktrace: on_param
+
+spring:
+  r2dbc:
+    url: r2dbc:mysql://localhost/demo?createDatabaseIfNotExist=true
+    username: root
+    password: 1234
+
+logging:
+  level:
+    org:
+      springframework:
+      r2dbc: DEBUG
+
+
