@@ -1,7 +1,7 @@
-package com.arthur.Webflux.Framework.Trainning.service;
+package com.arthur.webflux.framework.trainning.service;
 
-import com.arthur.Webflux.Framework.Trainning.model.Anime;
-import com.arthur.Webflux.Framework.Trainning.repository.AnimeRepository;
+import com.arthur.webflux.framework.trainning.model.Anime;
+import com.arthur.webflux.framework.trainning.repository.AnimeRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
@@ -29,4 +29,19 @@ public class AnimeService {
         return Mono.error(new ResponseStatusException(HttpStatus.NOT_FOUND, "Anime not found"));
     }
 
+    public Mono<Anime> save(Anime anime){
+        return animeRepository.save(anime);
+    }
+
+    public Mono<Void> update(Anime anime){
+        return findById(anime.getId())
+                .flatMap(animeRepository::save)
+                .thenEmpty(Mono.empty());
+    }
+
+
+    public Mono<Void> delete(Integer id) {
+        return findById(id)
+                .flatMap(animeRepository::delete);
+    }
 }

@@ -1,4 +1,4 @@
-package com.arthur.Webflux.Framework.Trainning;
+package com.arthur.webflux.framework.trainning;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

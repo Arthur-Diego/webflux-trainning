@@ -1,4 +1,4 @@
-package com.arthur.Webflux.Framework.Trainning;
+package com.arthur.webflux.framework.trainning;
 
 import org.springframework.data.repository.reactive.ReactiveCrudRepository;
 

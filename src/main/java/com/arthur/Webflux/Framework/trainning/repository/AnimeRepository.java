@@ -1,11 +1,12 @@
-package com.arthur.Webflux.Framework.Trainning.repository;
+package com.arthur.webflux.framework.trainning.repository;
 
-import com.arthur.Webflux.Framework.Trainning.model.Anime;
+import com.arthur.webflux.framework.trainning.model.Anime;
 import org.springframework.data.repository.reactive.ReactiveCrudRepository;
 import reactor.core.publisher.Mono;
 
 public interface AnimeRepository extends ReactiveCrudRepository<Anime, Integer> {
 
-    Mono<Anime> findById(int id);
+    @Override
+    Mono<Anime> findById(Integer id);
 
 }

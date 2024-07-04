@@ -1,4 +1,4 @@
-package com.arthur.Webflux.Framework.Trainning.exception;
+package com.arthur.webflux.framework.trainning.exception;
 
 import org.springframework.boot.autoconfigure.web.WebProperties;
 import org.springframework.boot.autoconfigure.web.reactive.error.AbstractErrorWebExceptionHandler;

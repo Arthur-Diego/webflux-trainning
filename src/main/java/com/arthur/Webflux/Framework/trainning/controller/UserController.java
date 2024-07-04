@@ -1,7 +1,7 @@
-package com.arthur.Webflux.Framework.Trainning.controller;
+package com.arthur.webflux.framework.trainning.controller;
 
-import com.arthur.Webflux.Framework.Trainning.User;
-import com.arthur.Webflux.Framework.Trainning.UserRepository;
+import com.arthur.webflux.framework.trainning.User;
+import com.arthur.webflux.framework.trainning.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.reactive.function.client.WebClient;
