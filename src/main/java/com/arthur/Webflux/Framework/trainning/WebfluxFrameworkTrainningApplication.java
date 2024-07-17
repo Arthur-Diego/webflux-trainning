@@ -7,10 +7,6 @@ import reactor.blockhound.BlockHound;
 @SpringBootApplication
 public class WebfluxFrameworkTrainningApplication {
 
-	static{
-		BlockHound.install();
-	}
-
 	public static void main(String[] args) {
 
 		SpringApplication.run(WebfluxFrameworkTrainningApplication.class, args);

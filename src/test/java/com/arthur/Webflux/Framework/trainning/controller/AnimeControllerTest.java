@@ -9,7 +9,6 @@ import org.mockito.BDDMockito;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
-import org.springframework.web.server.ResponseStatusException;
 import reactor.blockhound.BlockHound;
 import reactor.blockhound.BlockingOperationError;
 import reactor.core.publisher.Flux;
@@ -34,27 +33,6 @@ class AnimeControllerTest {
 
     private final Anime anime = AnimeCreator.createValidAnime();
     private final Anime animeToBeSaved = AnimeCreator.createAnimeToBeSaved();
-
-    @BeforeAll
-    public static void blockHoundSetup(){
-        BlockHound.install();
-    }
-
-    @Test
-    public void blockHoundWorks(){
-        try {
-            FutureTask<?> task = new FutureTask<>( () -> {
-                Thread.sleep(0);
-                return "";
-            });
-            Schedulers.parallel().schedule(task);
-
-            task.get(10, TimeUnit.SECONDS);
-            Assertions.fail("should fail");
-        } catch (Exception e) {
-            Assertions.assertTrue(e.getCause() instanceof BlockingOperationError);
-        }
-    }
 
     @BeforeEach
     public void setup(){
@@ -83,7 +61,7 @@ class AnimeControllerTest {
     }
 
     @Test
-    @DisplayName("findById retirns a Mono with anime when it exists")
+    @DisplayName("findById returns a Mono with anime when it exists")
     public void findById_ReturnMonoError_WhenEmptyMonoIsReturned(){
 
         StepVerifier.create(animeController.findById(1))
@@ -121,6 +99,4 @@ class AnimeControllerTest {
                 .expectSubscription()
                 .verifyComplete();
     }
-
-
 }

@@ -1,7 +1,5 @@
 server:
   port: 8080
-  error:
-    include-stacktrace: on_param
 
 spring:
   r2dbc:
@@ -11,8 +9,6 @@ spring:
 
 logging:
   level:
-    org:
-      springframework:
-      r2dbc: DEBUG
-
+    org.springframework.r2dbc: DEBUG
+    org.springframework: INFO
 

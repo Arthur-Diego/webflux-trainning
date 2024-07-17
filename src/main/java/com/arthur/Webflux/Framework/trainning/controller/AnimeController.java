@@ -17,7 +17,9 @@ import org.springframework.web.bind.annotation.RestController;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
-import javax.validation.Valid;
+import jakarta.validation.Valid;
+
+import java.util.List;
 
 @RequiredArgsConstructor
 @RestController
@@ -28,11 +30,12 @@ public class AnimeController {
     private final AnimeService service;
 
     @GetMapping
+    @ResponseStatus(HttpStatus.OK)
     public Flux<Anime> listAll(){
         return service.findAll();
     }
 
-    @GetMapping("/findbyid/{id}")
+    @GetMapping("{id}")
     public Mono<Anime> findById(@PathVariable("id") Integer id){
         return service.findById(id);
     }
@@ -41,6 +44,12 @@ public class AnimeController {
     @ResponseStatus(HttpStatus.CREATED)
     public Mono<Anime> save(@Valid @RequestBody Anime anime){
         return service.save(anime);
+    }
+
+    @PostMapping("/batch")
+    @ResponseStatus(HttpStatus.CREATED)
+    public Flux<Anime> saveAll(@RequestBody List<Anime> animes){
+        return service.saveAll(animes);
     }
 
     @PutMapping(path = "{id}")
